@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/metaacademy2}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 2GB
+      max-request-size: 2GB
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /api
+
+jwt:
+  secret: ${JWT_SECRET:metaAcademy-super-secret-key-minimum-32-chars-2025}
+  expiration: 86400000
+  refresh-expiration: 604800000
+
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:@dgnedgr1q}
+  api-key: ${CLOUDINARY_API_KEY:151833762599529}
+  api-secret: ${CLOUDINARY_API_SECRET:T8WmIzJpybq2XHgsm_RLf9RxD6M}
+
+gamification:
+  points:
+    lesson-attempt-1: 10
+    lesson-attempt-2: 5
+    lesson-attempt-3: 3
+    streak-bonus: 10
+    streak-bonus-interval: 10
+  rating-reset-cron: "0 0 0 1 * *"
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+
+openai:
+  api-key: ${OPENAI_API_KEY:}
+
+logging:
+  level:
+    kg.metaacademy: DEBUG
